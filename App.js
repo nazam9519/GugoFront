@@ -3,15 +3,58 @@ import { AppRegistry,
 AsyncStorage,
 StyleSheet,
 Text,
+Alert,
+TextInput,
+Button,
 View,
 TouchableHighlight,
 AlertIOS,
 } from 'react-native';
 
 export default class App extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {text: ''};
+    this.state = {user: ''};
+    this.state = {pass: ''};
+  }
+
+  handleUser = (text) => {
+    this.setState({user: text})
+  }
+  handlePass = (text) => {
+    this.setState({pass: text})
+  }
+  login = (user,pass) => {
+    Alert.alert('user:' + user + '\npass: ' + pass)
+  }
+
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} >
+        <Text style={styles.title}> Login </Text>
+        <View style={styles.row} >
+          <TextInput
+            style={styles.theText}
+            placeholder='Username'
+            onChangeText = {this.handleUser}
+            />
+          <TextInput
+            style={styles.theText}
+            placeholder='Password'
+            onChangeText = {this.handlePass}
+            />
+        </View>
+        <View style={styles.row}>
+          <Button style={styles.button}
+             onPress={ () => this.login(this.state.user,this.state.pass)}
+             title="Login"
+          />
+        </View>
+      </View>
+
+      /*<View style={styles.container}>
     <View style={styles.row}>
         <Text style={styles.title}>Signup/Login below</Text>
     </View>
@@ -23,7 +66,7 @@ export default class App extends React.Component {
             <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
     </View>
-</View>
+</View>*/
     );
   }
 }
@@ -56,5 +99,22 @@ var styles = StyleSheet.create({
         marginBottom: 10,
         alignSelf: 'stretch',
         justifyContent: 'center'
+    },
+    flowRight: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'stretch',
+    },
+    theText: {
+      height: 36,
+      padding: 4,
+      marginRight: 5,
+      marginBottom: 10,
+      flexGrow: 1,
+      fontSize: 18,
+      borderWidth: 1,
+      borderColor: '#48BBEC',
+      borderRadius: 8,
+      color: '#48BBEC',
     },
 });
