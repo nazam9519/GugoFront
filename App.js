@@ -1,4 +1,6 @@
 import React from 'react';
+import Expo from 'expo';
+import * as Rest from './RestClient.js';
 import { AppRegistry,
 AsyncStorage,
 StyleSheet,
@@ -10,6 +12,7 @@ View,
 TouchableHighlight,
 AlertIOS,
 } from 'react-native';
+var token = null;
 
 export default class App extends React.Component {
 
@@ -26,9 +29,14 @@ export default class App extends React.Component {
   handlePass = (text) => {
     this.setState({pass: text})
   }
-  login = (user,pass) => {
-    Alert.alert('user:' + user + '\npass: ' + pass)
+  login = async (user,pass) => {
+
+  token = await Rest.login(user, pass);
+
+  alert("your token is: "+ token.token);
   }
+
+
 
   render() {
     return (
