@@ -1,0 +1,5 @@
+-New folders
+	-app (moved app.js here, renamed to main.js)
+	-app/components
+	-app/config
+	-app/lib (moved RestClient.js here)

@@ -1,22 +1,27 @@
 import React from 'react';
 import Expo from 'expo';
-import * as Rest from './RestClient.js';
-import { AppRegistry,
-AsyncStorage,
-StyleSheet,
-Text,
-Alert,
-TextInput,
-Button,
-View,
-TouchableHighlight,
-AlertIOS,
-} from 'react-native';
+//import * as Rest from './components/RestClient.js';
+import Login from './app/components/Login/UserLogin'
+import { AppRegistry, AsyncStorage, StyleSheet, Text, Alert, TextInput, Button, View,TouchableHighlight, AlertIOS } from 'react-native';
+import{Scene, Router}from 'react-native-router-flux'
 var token = null;
 
-export default class App extends React.Component {
+export default class main extends React.Component {
+  
+  render() {
+    return (
+      <View>
+        <Scene key='Login'
+          compnent={Login}
+        />
+      </View>
+      );
+    }
+  }
 
-  constructor(props){
+
+  /*********************MOVED TO USERLOGIN.JS************************ */
+  /*constructor(props){
     super(props);
     this.state = {text: ''};
     this.state = {user: ''};
@@ -34,12 +39,8 @@ export default class App extends React.Component {
   token = await Rest.login(user, pass);
 
   alert("your token is: "+ token.token);
-  }
-
-
-
-  render() {
-    return (
+  }*/
+      /*
       <View style={styles.container} >
         <Text style={styles.title}> Login </Text>
         <View style={styles.row} >
@@ -60,7 +61,7 @@ export default class App extends React.Component {
              title="Login"
           />
         </View>
-      </View>
+      </View>*/
 
       /*<View style={styles.container}>
     <View style={styles.row}>
@@ -75,11 +76,8 @@ export default class App extends React.Component {
         </TouchableHighlight>
     </View>
 </View>*/
-    );
-  }
-}
-
-var styles = StyleSheet.create({
+ 
+/*var styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         marginTop: 50,
@@ -125,4 +123,4 @@ var styles = StyleSheet.create({
       borderRadius: 8,
       color: '#48BBEC',
     },
-});
+});*/
