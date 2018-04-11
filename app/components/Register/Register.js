@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Expo from 'expo';
 import * as Rest from '../../lib/RestClient.js';
-import DatePicker from 'react-native-datepicker'
+//import * as styles from './styles.js'
 import { AppRegistry,
 AsyncStorage,
 StyleSheet,
@@ -12,21 +12,18 @@ Button,
 View,
 TouchableHighlight,
 AlertIOS,
-Picker,
 } from 'react-native';
 
 
 var token = null;
 
-export default class UserLogin extends Component{
+export default class Register extends Component{
 
     constructor(props){
         super(props);
         this.state = {text: ''};
         this.state = {user: ''};
         this.state = {pass: ''};
-        this.state = {date: "01-01-2018"};
-        this.state = {PicX: ''};
       }
 
       handleUser = (text) => {
@@ -44,18 +41,8 @@ export default class UserLogin extends Component{
     render(){
         return(
             <View style={styles.container} >
-                <Text style={styles.title}> Login </Text>
+                <Text style={styles.title}> Register </Text>
                 <View style={styles.row} >
-                    <TextInput
-                        style={styles.theText}
-                        placeholder='First Name'
-                        onChangeText = {this.handleUser}
-                    />
-                    <TextInput
-                        style={styles.theText}
-                        placeholder='Last Name'
-                        onChangeText = {this.handleUser}
-                    />
                     <TextInput
                         style={styles.theText}
                         placeholder='Username'
@@ -63,55 +50,15 @@ export default class UserLogin extends Component{
                     />
                     <TextInput
                         style={styles.theText}
-                        placeholder='Email'
-                        onChangeText = {this.handleUser}
-                    />
-                    <DatePicker
-                        style={{width: 200, marginBottom: 10}}
-                        date={this.state.date}
-                        mode="date"
-                        placeholder="select date"
-                        format="DD-MM-YYYY"
-                        minDate="1930-05-01"
-                        maxDate="2099-06-01"
-                        confirmBtnText="Confirm"
-                        cancelBtnText="Cancel"
-                        customStyles={{
-                            dateIcon: {
-                                position: 'absolute',
-                                left: 0,
-                                top: 4,
-                                marginLeft: 0
-                            },
-                            dateInput: {
-                                marginLeft: 36
-                            }
-                        }}
-                        onDateChange={(date) => {this.setState({date: date})}}
-                    />
-                    {/*<Button title="Get Selected Picker Value" onPress={ this.GetSelectedPickerItem } />
-                    <Picker
-                        selectedValue={this.state.PicX}
-                        style={{ height: 50, width: 100}}
-                        onValueChange={(itemValue,itemIndex) => this.setState({PicX: itemValue})}>
-                        <Picker.Item label="Male" value="Male"/>
-                        <Picker.Item label="Female" value="Female"/>
-                    </Picker>*/}
-                    <TextInput
-                        style={styles.theText}
-                        placeholder='Password'
                         secureTextEntry={true}
+                        placeholder='Password'
                         onChangeText = {this.handlePass}
-                    />
-                    <TextInput 
-                        style={styles.theText}
-                        placeholder='UserName'
                     />
                 </View>
                 <View style={styles.row}>
                     <Button style={styles.button}
                         onPress={ () => this.login(this.state.user,this.state.pass)}
-                        title="Login"
+                        title="Register"
                     />
                     </View>
             </View>
