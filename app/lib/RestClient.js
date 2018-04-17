@@ -40,3 +40,22 @@ export var login = async function(user,password) {
         console.log(error);
     }
 }
+
+export var register = async function(regObj) {
+    try {
+    let response = await fetch('https://gugo-rpierre23.c9users.io/register', {
+    method: 'POST',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+    },
+    body: regObj
+    });
+    let responseJson = await response.json();
+    return responseJson;
+
+    } catch(error){
+
+        console.log(error);
+    }
+}

@@ -24,13 +24,15 @@ export default class UserLogin extends Component{
     constructor(props){
         super(props);
         this.state = {
-            text: '',
-            user: '',
-            pass: '',
-            date: '',
+            FirstName: '',
+            LastName: '',
+            UserName: '',
+            DateOfBirth: '',
+            Email: '',
             modalVisible: false,
-            gender: 'Select Gender',
+            Gender: 'Select Gender',
             private: false,
+            Password: ''
         }
       }
 
@@ -38,15 +40,32 @@ export default class UserLogin extends Component{
         this.setState({modalVisible: visible});
       }
 
-      handleUser = (text) => {
-        this.setState({user: text})
+      handleFirstName = (text) => {
+        this.setState({FirstName: text})
       }
-      handlePass = (text) => {
-        this.setState({pass: text})
+      handleLastName = (text) => {
+        this.setState({LastName: text})
       }
-      login = async (user,pass) => {
+      handleUname = (text) => {
+        this.setState({UserName: text})
+      }
+      handleEmail = (text) => {
+        this.setState({Email: text})
+      }
+      handleDOB = (date) => {
+        this.setState({DateOfBirth: date})
+      }
+      handleGender = (itemValue) => {
+        this.setState({Gender: itemValue})
+      }
+      handlePassword = (text) => {
+        this.setState({Password: text})
+      }
     
-      token = await Rest.login(user, pass);
+
+      register = async () => {
+    
+      token = await Rest.register(this.state)
     
       alert("your token is: "+ token.token);
       }
@@ -59,27 +78,27 @@ export default class UserLogin extends Component{
                     <TextInput
                         style={styles.theText}
                         placeholder='First Name'
-                        onChangeText = {this.handleUser}
+                        onChangeText = {this.handleFirstName}
                     />
                     <TextInput
                         style={styles.theText}
                         placeholder='Last Name'
-                        onChangeText = {this.handleUser}
+                        onChangeText = {this.handleLastName}
                     />
                     <TextInput
                         style={styles.theText}
                         placeholder='Username'
-                        onChangeText = {this.handleUser}
+                        onChangeText = {this.handleUname}
                     />
                     <TextInput
                         style={styles.theText}
                         placeholder='Email'
-                        onChangeText = {this.handleUser}
+                        onChangeText = {this.handleEmail}
                         keyboardType={'email-address'}                       
                     />
                     <DatePicker
                         style={{width: 200, marginBottom: 10}}
-                        date={this.state.date}
+                        date={this.state.DateOfBirth}
                         mode="date"
                         placeholder="select date"
                         format="DD-MM-YYYY"
@@ -98,7 +117,7 @@ export default class UserLogin extends Component{
                                 marginLeft: 36
                             }
                         }}
-                        onDateChange={(date) => {this.setState({date: date})}}
+                        onDateChange={(date)=>{this.handleDOB}}
                     />
                     <Modal
                         animationType="slide"
@@ -111,7 +130,7 @@ export default class UserLogin extends Component{
                             <View>
                                     <Picker 
                                         selectedValue={this.state.gender} 
-                                        onValueChange={(itemValue,itemIndex) => this.setState({gender: itemValue})}>
+                                        onValueChange={(itemValue,itemIndex) => {this.handleGender}}>
                                         <Picker.Item label="Select Gender"/>
                                         <Picker.Item label="Male" value="M"/>
                                         <Picker.Item label="Female" value="F"/>
@@ -136,16 +155,17 @@ export default class UserLogin extends Component{
                         style={styles.theText}
                         placeholder='Password'
                         secureTextEntry={true}
-                        onChangeText = {this.handlePass}
+                        onChangeText = {this.handlePassword}
                     />
                     <TextInput 
                         style={styles.theText}
                         placeholder='UserName'
+                        onChangeText = {this.handleUname}
                     />
                 </View>
                 <View style={styles.row}>
                     <Button style={styles.button}
-                        onPress={ () => this.login(this.state.user,this.state.pass)}
+                        onPress={ () => this.register()}
                         title="Register"
                     />
                     </View>
