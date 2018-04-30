@@ -1,23 +1,5 @@
 import RestClient from 'react-native-rest-client';
  
-// export default class YourRestApi extends RestClient {
-//   constructor () {
-//     // Initialize with your base URL 
-//     super('https://gugo-rpierre23.c9users.io');
-//   }
-//   // Now you can write your own methods easily 
-//  login = function(username, password) {
-//     // Returns a Promise with the response. 
-//     return this.POST('/login', { username, password });
-//   }
-//  getCurrentUser = () => {
-//     // If the request is successful, you can return the expected object 
-//     // instead of the whole response. 
-//     return this.GET('/auth')
-//       .then(response => response.user);
-//   }
-// };
-
 
 export var login = async function(user,password) {
     try {
@@ -38,6 +20,7 @@ export var login = async function(user,password) {
     } catch(error){
 
         console.log(error);
+        throw error;
     }
 }
 
@@ -49,7 +32,7 @@ export var register = async function(regObj) {
         Accept: 'application/json',
         'Content-Type': 'application/json',
     },
-    body: regObj
+    body: JSON.stringify(regObj)
     });
     let responseJson = await response.json();
     return responseJson;
@@ -57,5 +40,6 @@ export var register = async function(regObj) {
     } catch(error){
 
         console.log(error);
+        throw error;
     }
 }

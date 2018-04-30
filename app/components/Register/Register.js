@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Expo from 'expo';
 import * as Rest from '../../lib/RestClient.js';
 import DatePicker from 'react-native-datepicker';
+import { Dropdown } from 'react-native-material-dropdown';
 import { 
 AppRegistry,
 AsyncStorage,
@@ -29,6 +30,7 @@ export default class UserLogin extends Component{
             UserName: '',
             DateOfBirth: '',
             Email: '',
+            RelationshipStatus: '',
             modalVisible: false,
             Gender: 'Select Gender',
             private: false,
@@ -55,11 +57,14 @@ export default class UserLogin extends Component{
       handleDOB = (date) => {
         this.setState({DateOfBirth: date})
       }
-      handleGender = (itemValue) => {
-        this.setState({Gender: itemValue})
+      handleGender = (itemValue,itemIndex) => {
+        this.setState({Gender: itemValue,itemIndex})
       }
       handlePassword = (text) => {
         this.setState({Password: text})
+      }
+      handleRStatus = (text) => {
+        this.setState({RelationshipStatus: text})
       }
     
 
@@ -67,7 +72,7 @@ export default class UserLogin extends Component{
     
       token = await Rest.register(this.state)
     
-      alert("your token is: "+ token.token);
+      alert(token.message);
       }
 
     render(){
@@ -96,12 +101,17 @@ export default class UserLogin extends Component{
                         onChangeText = {this.handleEmail}
                         keyboardType={'email-address'}                       
                     />
+                    <Dropdown
+                    label='Relationship Status'
+                    data={RelationShipLst}
+                    onChangeText = {this.handleRStatus}
+                    /> 
                     <DatePicker
                         style={{width: 200, marginBottom: 10}}
                         date={this.state.DateOfBirth}
                         mode="date"
                         placeholder="select date"
-                        format="DD-MM-YYYY"
+                        format="MM-DD-YYYY"
                         minDate="1930-05-01"
                         maxDate="2099-06-01"
                         confirmBtnText="Confirm"
@@ -117,7 +127,7 @@ export default class UserLogin extends Component{
                                 marginLeft: 36
                             }
                         }}
-                        onDateChange={(date)=>{this.handleDOB}}
+                        onDateChange={this.handleDOB}
                     />
                     <Modal
                         animationType="slide"
@@ -129,8 +139,8 @@ export default class UserLogin extends Component{
                         <View style={styles.container}>
                             <View>
                                     <Picker 
-                                        selectedValue={this.state.gender} 
-                                        onValueChange={(itemValue,itemIndex) => {this.handleGender}}>
+                                        selectedValue={this.state.Gender} 
+                                        onValueChange={this.handleGender}>
                                         <Picker.Item label="Select Gender"/>
                                         <Picker.Item label="Male" value="M"/>
                                         <Picker.Item label="Female" value="F"/>
@@ -151,16 +161,12 @@ export default class UserLogin extends Component{
                         }}>
                         <Text>{printGender(this.state.gender)}</Text>
                     </TouchableHighlight>
+                                         
                     <TextInput
                         style={styles.theText}
                         placeholder='Password'
                         secureTextEntry={true}
                         onChangeText = {this.handlePassword}
-                    />
-                    <TextInput 
-                        style={styles.theText}
-                        placeholder='UserName'
-                        onChangeText = {this.handleUname}
                     />
                 </View>
                 <View style={styles.row}>
@@ -173,6 +179,14 @@ export default class UserLogin extends Component{
         );
     }
 }
+//RelationshipStatus
+let RelationShipLst = [{
+    value: 'single',
+  }, {
+    value: 'married',
+  }, {
+    value: 'relationship',
+  }];
 
 const printGender = (sex) => {
     if(sex == 'M'){
