@@ -2,8 +2,10 @@ import React,{com} from 'react';
 import Expo from 'expo';
 import Login from './app/components/Login/UserLogin.js'
 import Register from './app/components/Register/Register.js'
-import { AppRegistry, AsyncStorage, StyleSheet, Text, Alert, TextInput, Button, View,TouchableHighlight, AlertIOS } from 'react-native';
-import {TabNavigator,StackNavigator} from 'react-navigation'
+import { AppRegistry, AsyncStorage, Text, Alert, TextInput, Button, View,TouchableHighlight, AlertIOS } from 'react-native';
+import {TabNavigator,StackNavigator} from 'react-navigation';
+
+import styles from './CSS/DefaultStyle.js';
 var token = null;
 
 class SplashScreen extends React.Component{
@@ -25,7 +27,7 @@ class SplashScreen extends React.Component{
   }
 }
 export default class main extends React.Component {
-  
+
   render() {
     return (
       <RootStack/>
@@ -47,21 +49,7 @@ export const RootStack = StackNavigator({
 });
 
 
-var styles = StyleSheet.create({
 
-  container: {
-    justifyContent: 'center',
-    marginTop: 50,
-    padding: 20,
-    backgroundColor: '#ffffff',
-  },
-  zeetitle:{
-    fontSize: 30,
-    alignSelf: 'center',
-    marginBottom: 30
-  },
-
-})
 
   /*********************MOVED TO USERLOGIN.JS************************ */
   /*constructor(props){
@@ -119,7 +107,7 @@ var styles = StyleSheet.create({
         </TouchableHighlight>
     </View>
 </View>*/
- 
+
 /*var styles = StyleSheet.create({
     container: {
         justifyContent: 'center',

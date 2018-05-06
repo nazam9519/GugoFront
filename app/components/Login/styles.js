@@ -1,4 +1,6 @@
-export default StyleSheet.create({
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         marginTop: 50,
@@ -44,4 +46,8 @@ export default StyleSheet.create({
       borderRadius: 8,
       color: '#48BBEC',
     },
-})
+    externalClass: {
+      backgroundColor: 'purple',
+    },
+});
+export default styles;

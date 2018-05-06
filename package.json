@@ -10,7 +10,7 @@
     "react-native-rest-client": "^0.1.1",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-simple-radio-button": "^2.7.1",
-    "react-navigation": "^1.5.11"
+    "react-navigation": "^1.5.12"
   },
   "devDependencies": {}
 }
