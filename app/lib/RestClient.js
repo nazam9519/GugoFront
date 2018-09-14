@@ -43,3 +43,23 @@ export var register = async function(regObj) {
         throw error;
     }
 }
+
+export var PullInterest = async function() {
+    try {
+    let response = await fetch('https://gugo-rpierre23.c9users.io/Meta/interest', {
+    method: 'GET',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+    }
+    });
+    let responseJson = await response.json();
+    return responseJson;
+
+    } catch(error){
+
+        console.log(error);
+        throw error;
+    }
+}
+

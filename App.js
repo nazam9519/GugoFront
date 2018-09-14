@@ -1,10 +1,11 @@
 import React,{com} from 'react';
 import Expo from 'expo';
-import Login from './app/components/Login/UserLogin.js'
-import Register from './app/components/Register/Register.js'
+import Login from './app/components/Login/UserLogin.js';
+import interest from './app/components/Login/interest.js';
+import Register from './app/components/Register/Register.js';
 import { AppRegistry, AsyncStorage, StyleSheet, Text, Alert, TextInput, Button, View,TouchableHighlight, AlertIOS } from 'react-native';
-import {TabNavigator,StackNavigator} from 'react-navigation'
-var token = null;
+import {TabNavigator,StackNavigator} from 'react-navigation';
+
 
 class SplashScreen extends React.Component{
   render() {
@@ -42,6 +43,9 @@ export const RootStack = StackNavigator({
   },
   Register:{
     screen: Register,
+  },
+  interest:{
+    screen: interest,
   }
 
 });

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Expo from 'expo';
 import * as Rest from '../../lib/RestClient.js';
-//import * as styles from './styles.js'
+import {StackNavigator} from 'react-navigation'
 import { AppRegistry,
 AsyncStorage,
 StyleSheet,
@@ -32,12 +32,13 @@ export default class Register extends Component{
       handlePass = (text) => {
         this.setState({pass: text})
       }
-      login = async (user,pass) => {
-    
-      token = await Rest.login(user, pass);
-    
-      alert("your token is: "+ token.token);
-      }
+      login = async (user,pass) => { 
+
+      token = await Rest.login(user, pass);   
+    //alert("your token is: "+ token.token);
+
+    this.props.navigation.navigate('interest')
+ }
     render(){
         return(
             <View style={styles.container} >
@@ -65,6 +66,7 @@ export default class Register extends Component{
         );
     }
 }
+
 var styles = StyleSheet.create({
         container: {
             justifyContent: 'center',
