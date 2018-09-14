@@ -28,9 +28,9 @@ export default class interest extends Component{
     constructor(props){
         super(props);  
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+
           this.state = {
-             win: Dimensions.get('window'),
-             ratio: win.width/576,
             intrstLst: null,
             GPrntIntrst: [],
             //PrntIntrst: [],
@@ -53,6 +53,8 @@ export default class interest extends Component{
     render(){
             const { GPrntIntrst, intrstLst , isLoading } = this.state;
             fullIntLst = intrstLst
+            const win = Dimensions.get('window');
+            const ratio = win.width/576;
         return(
           <View>                
 
@@ -63,11 +65,11 @@ export default class interest extends Component{
                   renderRow={(data, rowID, sectionID) => (
                     
                     <View style={{padding: 5.4, alignSelf: 'flex-start'}}>
-                    <Text style={styles.interestText}> {data.title} </Text> 
+                    <Text style={{width: win.width/3.3}}> {data.title} </Text> 
                <Image
                style={{
-                width: this.win.width/3.3,
-                height: 192 * this.ratio,
+                width: win.width/3.3,
+                height: 192 * ratio,
               }}
               
                  source={data.image}/>
@@ -96,7 +98,7 @@ var styles = StyleSheet.create({
         paddingTop: 5
       },
       interestText: {
-        width: this.win.width/3.3
+        //width: win.width/3.3
       }
       ,
       list: {
