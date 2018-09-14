@@ -28,16 +28,16 @@ export default class interest extends Component{
     constructor(props){
         super(props);  
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
- 
-
           this.state = {
+             win: Dimensions.get('window'),
+             ratio: win.width/576,
             intrstLst: null,
             GPrntIntrst: [],
             //PrntIntrst: [],
             //ChldInterst: [],
             isLoading: false,
-            pictures: ds.cloneWithRows([{image:require("./carIcon.png")},{image:require('./Health.png')},{image:require('./bike.png')},
-            {image:require('./download.png')},{image:require('./joe_oakes.png')}, {image:require('./nabil.png')},{image:require('./wrx.png')}])
+            pictures: ds.cloneWithRows([{image:require("../../../assets/carIcon.png"),title: "Car" },{image:require('../../../assets/Health.png'),title: "HEALTH & FITNESS" },{image:require('../../../assets/bike.png'),title: "BIKE" },
+            {image:require('../../../assets/download.png'),title: "YOGA" },{image:require('../../../assets/joe_oakes.png'),title: "JOE OAKES" }, {image:require('../../../assets/nabil.png'),title: "NABIL" },{image:require('../../../assets/wrx.png'),title: "WRX" }])
 
         }               
       }
@@ -50,106 +50,35 @@ export default class interest extends Component{
             .then(intLst => this.setState({ GPrntIntrst: Object.keys(intLst[0]), isLoading: false }))
             //.then(intLst => this.setState({ GPrntIntrst: Object.keys(intLst[0].Categories),intrstLst: intLst, isLoading: false }))
     }
-
-    //   async componentWillMount() {
-
-    //     //if(intLst == null){
-    //         var testm = await Rest.PullInterest();
-    //         This.setState({intLst: testm});
-    //         // var intGPrntKeys = Object.keys(intLst[0].Categories);
-    //         // var intPrntKeys = Object.keys(intLst[0].Categories[intGPrntKeys[0]]);
-
-
-    //         // console.log('objectKeys: ', intGPrntKeys);
-    //         // console.log('objectKeys: ', intPrntKeys);
-    //   }
-
-      //Object.keys(this.intLst[0].Categories)
-/*          async componentDidMount() {
-        var testm = await Rest.PullInterest();
-        This.setState({intLst: testm});
-       return(<Dropdown label='Relationship Status' data={Object.keys(this.intLst[0].Categories)} onChangeText = {this.handleRStatus} />  );
-
-      } */
-
-
-
-/*       async loadUserTypes () {
-      //  getInterest();
-        return intLst.map(user => (
-           //<Picker.Item label={user.userName} value={user.userType} />
-           //onPress={ () => this.register()}
-           //<Dropdown label='Relationship Status' data={user.Categories} onChangeText = {this.handleRStatus} /> 
-        ))
-      } */
-
-      renderPrntInt = (l, i) =>{
-        return <ListItem
-        key={i}
-        title={l}
-        chevronColor="red"
-        hideChevron={true}
-        switchButton = {true}
-        //subtitle = {onSwitch = l.map(this.handleRStatus) }
-        //onSwitch = {subtitle = Object.keys(fullIntLst[0].Categories[l]).map(this.handleRStatus)}
-    />
-      }
-    
     render(){
-      const win = Dimensions.get('window');
-      const ratio = win.width/192; 
             const { GPrntIntrst, intrstLst , isLoading } = this.state;
             fullIntLst = intrstLst
         return(
-            <View>                  
+          <View>                
 
                   <ListView
                   contentContainerStyle={styles.list}
                   dataSource={this.state.pictures} //datasource either props/state only
                   pageSize={3}
                   renderRow={(data, rowID, sectionID) => (
+                    
+                    <View style={{padding: 5.4, alignSelf: 'flex-start'}}>
+                    <Text style={styles.interestText}> {data.title} </Text> 
                <Image
                style={{
-                width: win.width,
-                height: 192 * ratio
+                width: this.win.width/3.3,
+                height: 192 * this.ratio,
               }}
-              //resizeMode={'contain'} 
-                 source={data.image}/>)} //path here is url that you receive
+              
+                 source={data.image}/>
+                 
+                 </View>
+                )} //path here is url that you receive
                   />
             </View>
 
         );
     }
-
-    handleRStatus = (l,i) => {
-
-        //var Prnt = Object.keys(this.intrstLst[0].Categories[l])
-        return(       
-            <View style={styles.subtitleView}>  
-            <ListItem
-            key={i}
-            title={l}
-            chevronColor="black"
-            />))
-            </View> 
-            )          
-    
-/*     console.log("i've been hit");
-      this.setState(prevState => {
-
-        var Prnt = Object.keys(this.intrstLst[0].Categories[l])
-          return(       
-        <View style={styles.subtitleView}>
-        GPrntIntrst.map((Prnt, i) =>(      
-        <ListItem
-        key={i}
-        title={Prnt}
-        chevronColor="black"
-    />))
-        </View> 
-        )       
-      }); */
-}
 }
 
 let RelationShipLst = [{
@@ -166,9 +95,14 @@ var styles = StyleSheet.create({
         paddingLeft: 10,
         paddingTop: 5
       },
+      interestText: {
+        width: this.win.width/3.3
+      }
+      ,
       list: {
        flexDirection: "row",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        paddingVertical: 20
          },
 
       ratingImage: {
