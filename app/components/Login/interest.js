@@ -21,14 +21,14 @@ Image,
 ListView,
 Dimensions 
 } from 'react-native';
-
+var responseJSON = require("../../../assets/Json/images.json");
 var fullIntLst = null;
 export default class interest extends Component{
 
     constructor(props){
         super(props);  
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
+        //var pictures = ds.cloneWithRows(responseJSON.image);
 
           this.state = {
             intrstLst: null,
@@ -36,8 +36,9 @@ export default class interest extends Component{
             //PrntIntrst: [],
             //ChldInterst: [],
             isLoading: false,
-            pictures: ds.cloneWithRows([{image:require("../../../assets/carIcon.png"),title: "Car" },{image:require('../../../assets/Health.png'),title: "HEALTH & FITNESS" },{image:require('../../../assets/bike.png'),title: "BIKE" },
-            {image:require('../../../assets/download.png'),title: "YOGA" },{image:require('../../../assets/joe_oakes.png'),title: "JOE OAKES" }, {image:require('../../../assets/nabil.png'),title: "NABIL" },{image:require('../../../assets/wrx.png'),title: "WRX" }])
+            pictures: ds.cloneWithRows(responseJSON.image)
+            // pictures: ds.cloneWithRows([{image:require("../../../assets/carIcon.png"),title: "Car" },{image:require('../../../assets/Health.png'),title: "HEALTH & FITNESS" },{image:require('../../../assets/bike.png'),title: "BIKE" },
+            // {image:require('../../../assets/download.png'),title: "YOGA" },{image:require('../../../assets/joe_oakes.png'),title: "JOE OAKES" }, {image:require('../../../assets/nabil.png'),title: "NABIL" },{image:require('../../../assets/wrx.png'),title: "WRX" }])
 
         }               
       }
@@ -72,7 +73,7 @@ export default class interest extends Component{
                 height: 192 * ratio,
               }}
               
-                 source={data.image}/>
+                 source={data.src}/>
                  
                  </View>
                 )} //path here is url that you receive

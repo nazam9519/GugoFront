@@ -1,0 +1,39 @@
+
+{
+	"image": [{
+			"title": "automotive",
+			"src": require("../carIcon.png")
+		},
+		{
+			"title": "health&fitness",
+			"src": require("../Health.png")
+		},
+		{
+			"title": "Entertainment",
+			"src": require("../bike.png")
+		},
+		{
+			"title": "Food & Drink",
+			"src": require("../download.png")
+		},
+		{
+			"title": "Sports & Recreation",
+			"src": require("../joe_oakes.png")
+		},
+		{
+			"title": "Religion & Beliefs",
+			"src": require("../nabil.png")
+		},
+		{
+			"title": "Internet & Technology",
+			"src": require("../wrx.png")
+		},
+		{
+			"title": "Arts & Entertainment",
+			"src": require("../wrx.png")
+		}
+
+
+
+	]
+};
