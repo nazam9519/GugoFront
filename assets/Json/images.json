@@ -2,35 +2,43 @@
 {
 	"image": [{
 			"title": "automotive",
-			"src": require("../carIcon.png")
+			"src": require("../carIcon.png"),
+			"Selected": true
 		},
 		{
 			"title": "health&fitness",
-			"src": require("../Health.png")
+			"src": require("../Health.png"),
+			"Selected": true
 		},
 		{
 			"title": "Entertainment",
-			"src": require("../bike.png")
+			"src": require("../bike.png"),
+			"Selected": true
 		},
 		{
 			"title": "Food & Drink",
-			"src": require("../download.png")
+			"src": require("../download.png"),
+			"Selected": true
 		},
 		{
 			"title": "Sports & Recreation",
-			"src": require("../joe_oakes.png")
+			"src": require("../joe_oakes.png"),
+			"Selected": true
 		},
 		{
 			"title": "Religion & Beliefs",
-			"src": require("../nabil.png")
+			"src": require("../nabil.png"),
+			"Selected": true
 		},
 		{
 			"title": "Internet & Technology",
-			"src": require("../wrx.png")
+			"src": require("../wrx.png"),
+			"Selected": true
 		},
 		{
 			"title": "Arts & Entertainment",
-			"src": require("../wrx.png")
+			"src": require("../wrx.png"),
+			"Selected": true
 		}
 
 
