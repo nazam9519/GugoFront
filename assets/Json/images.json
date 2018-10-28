@@ -1,14 +1,48 @@
-
 {
-	"image": [{
+	"image": [
+		{
 			"title": "automotive",
 			"src": require("../carIcon.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "Car Shows",
+					"src": require("../carIcon.png"),
+					"Selected": true
+				},
+				{
+					"title": "Drifting",
+					"src": require("../carIcon.png"),
+					"Selected": true
+				},
+				{
+					"title": "Classics",
+					"src": require("../carIcon.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "health&fitness",
 			"src": require("../Health.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "Entertainment",
@@ -40,8 +74,5 @@
 			"src": require("../wrx.png"),
 			"Selected": true
 		}
-
-
-
 	]
 };

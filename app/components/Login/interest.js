@@ -68,9 +68,20 @@ export default class interest extends Component {
                     </View>
                     </TouchableHighlight>
                )} //path here is url that you receive
+               renderFooter={this.renderFooter}
                  />
+
            </View>);
            
+  }
+  renderFooter = () => {
+    return (
+      <TouchableHighlight onPress={ () => examplefunction }>
+      <View style={styless.button}> 
+        <Text style={styless.buttonText}>Show unlinked tags</Text>
+      </View>
+      </TouchableHighlight>
+    )
   }
   ImageChecked(index){
 
@@ -94,6 +105,53 @@ export default class interest extends Component {
   }
 }
 
+var styless = StyleSheet.create({
+  container: {
+      justifyContent: 'center',
+      marginTop: 50,
+      padding: 20,
+      backgroundColor: '#ffffff',
+  },
+  title: {
+      fontSize: 30,
+      alignSelf: 'center',
+      marginBottom: 30
+  },
+
+  buttonText: {
+      fontSize: 18,
+      color: 'white',
+      alignSelf: 'center'
+  },
+
+  button: {
+      height: 36,
+      backgroundColor: '#48BBEC',
+      borderColor: '#48BBEC',
+      borderWidth: 1,
+      borderRadius: 8,
+      marginBottom: 10,
+      alignSelf: 'stretch',
+      justifyContent: 'center'
+  },
+  flowRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+  },
+  theText: {
+    height: 36,
+    padding: 4,
+    marginRight: 5,
+    marginBottom: 10,
+    flexGrow: 1,
+    fontSize: 18,
+    borderWidth: 1,
+    borderColor: '#48BBEC',
+    borderRadius: 8,
+    color: '#48BBEC',
+  },
+});
 
 
 let RelationShipLst = [
