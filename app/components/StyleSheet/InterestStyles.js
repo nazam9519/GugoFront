@@ -49,13 +49,14 @@ const buttonText = {
     alignSelf: 'center'
 }
 const button = {
-    height: 36,
+    position:'absolute',
+    bottom:30,
+    right:10,
+    width:60,
+    height:60,
+    borderRadius: 30,
     backgroundColor: '#48BBEC',
     borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: 'stretch',
     justifyContent: 'center'
 }
 export default styles = StyleSheet.create({

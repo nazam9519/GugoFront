@@ -75,17 +75,13 @@ export default class interest extends Component {
            renderFooter={this.renderFooter}
              />
      </ScrollView>
+     <TouchableOpacity onPress={ () => examplefunction }>
+     <View style={styles.button}>
+       <Text style={styles.buttonText}>Next</Text>
+     </View>
+     </TouchableOpacity>
       </View>);
 
-  }
-  renderFooter = () => {
-    return (
-      <TouchableOpacity onPress={ () => examplefunction }>
-      <View style={styles.button}>
-        <Text style={styles.buttonText}>Show unlinked tags</Text>
-      </View>
-      </TouchableOpacity>
-    )
   }
   ImageChecked(index){
 
