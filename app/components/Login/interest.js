@@ -10,19 +10,20 @@ import {
   Text,
   Alert,
   TextInput,
-  StyleSheet,
   Dimensions,
   Button,
   View,
   TouchableHighlight,
+  TouchableOpacity,
   AlertIOS,
   Picker,
   Modal,
   Image,
-  ListView
+  ListView,
+  ScrollView
 } from 'react-native';
 
-import styles from  './styles.js';
+import styles from  '../StyleSheet/InterestStyles.js';
 
 var CheckMark = require("../../../assets/CheckMark.png");
 var responseJSON = require("../../../assets/Json/images.json");
@@ -31,7 +32,7 @@ export default class interest extends Component {
 
   constructor(props) {
     super(props);
-  
+
 
     this.state = {
       intrstLst: null,
@@ -53,24 +54,38 @@ export default class interest extends Component {
     const {GPrntIntrst, intrstLst, isLoading} = this.state;
     fullIntLst = intrstLst
     return (
-      <View style={styles.myBox}>
-        <ListView
-                 contentContainerStyle={styles.myRowStyle}
-                 dataSource={this.state.pictures} //datasource either props/state only
-                 pageSize={3}
-                 renderRow={(data, rowID, sectionID) => (
-                  <TouchableHighlight onPress={ () => this.ImageChecked(sectionID) }>
-                   <View style={styles.imageStyle}>
-                   <Text style={styles.bahaTest}> {data.title} </Text>
+      <View style={styles.imageContainer}>
+        <ScrollView>
+           <ListView
+             contentContainerStyle={styles.bottomTest}
+             dataSource={this.state.pictures} //datasource either props/state only
+             pageSize={3}
+             renderRow={(data, rowID, sectionID) => (
+
+                <TouchableOpacity  onPress={ () => this.ImageChecked(sectionID) }>
+                    <View style={styles.bottomItem}>
                       <Image
-                      style={styles.imageStyle}
-                        source={data.Selected ? data.src : CheckMark}/>
+                        style={data.Selected ? styles.bottomItemInner  : styles.imageStylePressed}
+                        source={data.src}/>
                     </View>
-                    </TouchableHighlight>
-               )} //path here is url that you receive
-                 />
-           </View>);
-           
+
+                    <Text style={styles.bahaTest}>  {data.title} </Text>
+                </TouchableOpacity>
+           )}
+           renderFooter={this.renderFooter}
+             />
+     </ScrollView>
+      </View>);
+
+  }
+  renderFooter = () => {
+    return (
+      <TouchableOpacity onPress={ () => examplefunction }>
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>Show unlinked tags</Text>
+      </View>
+      </TouchableOpacity>
+    )
   }
   ImageChecked(index){
 
@@ -85,7 +100,7 @@ export default class interest extends Component {
           }
 
         var newDataSrc = ds.cloneWithRows(imageArray);
-        
+
         this.setState({
           pictures: newDataSrc
         });
