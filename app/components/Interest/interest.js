@@ -10,19 +10,20 @@ import {
   Text,
   Alert,
   TextInput,
-  StyleSheet,
   Dimensions,
   Button,
   View,
   TouchableHighlight,
+  TouchableOpacity,
   AlertIOS,
   Picker,
   Modal,
   Image,
-  ListView
+  ListView,
+  ScrollView
 } from 'react-native';
 
-import styles from  './styles.js';
+import styles from  '../StyleSheet/InterestStyles.js';
 
 var CheckMark = require("../../../assets/CheckMark.png");
 var responseJSON = require("../../../assets/Json/images.json");
@@ -31,7 +32,7 @@ export default class interest extends Component {
 
   constructor(props) {
     super(props);
-  
+
 
     this.state = {
       intrstLst: null,
@@ -53,35 +54,34 @@ export default class interest extends Component {
     const {GPrntIntrst, intrstLst, isLoading} = this.state;
     fullIntLst = intrstLst
     return (
-      <View style={styles.myBox}>
-        <ListView
-                 contentContainerStyle={styles.myRowStyle}
-                 dataSource={this.state.pictures} //datasource either props/state only
-                 pageSize={3}
-                 renderRow={(data, rowID, sectionID) => (
-                  <TouchableHighlight onPress={ () => this.ImageChecked(sectionID) }>
-                   <View style={styles.imageStyle}>
-                   <Text style={styles.bahaTest}> {data.title} </Text>
-                      <Image
-                      style={styles.imageStyle}
-                        source={data.Selected ? data.src : CheckMark}/>
-                    </View>
-                    </TouchableHighlight>
-               )} //path here is url that you receive
-               renderFooter={this.renderFooter}
-                 />
+      <View style={styles.imageContainer}>
+        <ScrollView>
+           <ListView
+             contentContainerStyle={styles.bottomTest}
+             dataSource={this.state.pictures} //datasource either props/state only
+             pageSize={3}
+             renderRow={(data, rowID, sectionID) => (
 
-           </View>);
-           
-  }
-  renderFooter = () => {
-    return (
-      <TouchableHighlight onPress={ () => examplefunction }>
-      <View style={styless.button}> 
-        <Text style={styless.buttonText}>Show unlinked tags</Text>
-      </View>
-      </TouchableHighlight>
-    )
+                <TouchableOpacity  onPress={ () => this.ImageChecked(sectionID) }>
+                    <View style={styles.bottomItem}>
+                      <Image
+                        style={data.Selected ? styles.bottomItemInner  : styles.imageStylePressed}
+                        source={data.src}/>
+                    </View>
+
+                    <Text style={styles.bahaTest}>  {data.title} </Text>
+                </TouchableOpacity>
+           )}
+           renderFooter={this.renderFooter}
+             />
+     </ScrollView>
+     <TouchableOpacity onPress={ () => examplefunction }>
+     <View style={styles.button}>
+       <Text style={styles.buttonText}>Next</Text>
+     </View>
+     </TouchableOpacity>
+      </View>);
+
   }
   ImageChecked(index){
 
@@ -96,7 +96,7 @@ export default class interest extends Component {
           }
 
         var newDataSrc = ds.cloneWithRows(imageArray);
-        
+
         this.setState({
           pictures: newDataSrc
         });
@@ -105,53 +105,6 @@ export default class interest extends Component {
   }
 }
 
-var styless = StyleSheet.create({
-  container: {
-      justifyContent: 'center',
-      marginTop: 50,
-      padding: 20,
-      backgroundColor: '#ffffff',
-  },
-  title: {
-      fontSize: 30,
-      alignSelf: 'center',
-      marginBottom: 30
-  },
-
-  buttonText: {
-      fontSize: 18,
-      color: 'white',
-      alignSelf: 'center'
-  },
-
-  button: {
-      height: 36,
-      backgroundColor: '#48BBEC',
-      borderColor: '#48BBEC',
-      borderWidth: 1,
-      borderRadius: 8,
-      marginBottom: 10,
-      alignSelf: 'stretch',
-      justifyContent: 'center'
-  },
-  flowRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'stretch',
-  },
-  theText: {
-    height: 36,
-    padding: 4,
-    marginRight: 5,
-    marginBottom: 10,
-    flexGrow: 1,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48BBEC',
-    borderRadius: 8,
-    color: '#48BBEC',
-  },
-});
 
 
 let RelationShipLst = [
