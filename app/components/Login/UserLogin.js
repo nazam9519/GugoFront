@@ -33,7 +33,7 @@ export default class Register extends Component{
       }
       login = async (user,pass) => {
 
-      token = await Rest.login(user, pass);
+      //token = await Rest.login(user, pass);
     //alert("your token is: "+ token.token);
 
     this.props.navigation.navigate('interest')

@@ -49,15 +49,19 @@ const buttonText = {
     alignSelf: 'center'
 }
 const button = {
-    position:'absolute',
-    bottom:30,
-    right:10,
     width:60,
     height:60,
     borderRadius: 30,
     backgroundColor: '#48BBEC',
     borderColor: '#48BBEC',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    zIndex:2223,
+    position:'absolute'
+}
+const test = {
+
+  backgroundColor:'black',
+  flex:1
 }
 export default styles = StyleSheet.create({
 imageContainer:imageContainer,
@@ -68,4 +72,5 @@ imageStylePressed:imageStylePressed,
 bahaTest:bahaTest,
 button:button,
 buttonText:buttonText,
+test:test
 });

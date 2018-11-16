@@ -27,6 +27,7 @@ import styles from  '../StyleSheet/InterestStyles.js';
 
 var CheckMark = require("../../../assets/CheckMark.png");
 var responseJSON = require("../../../assets/Json/images.json");
+var subInterests = [];
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2});
 export default class interest extends Component {
 
@@ -72,15 +73,31 @@ export default class interest extends Component {
                     <Text style={styles.bahaTest}>  {data.title} </Text>
                 </TouchableOpacity>
            )}
-           renderFooter={this.renderFooter}
+           //renderFooter={this.renderFooter}
              />
      </ScrollView>
-     <TouchableOpacity onPress={ () => examplefunction }>
-     <View style={styles.button}>
-       <Text style={styles.buttonText}>Next</Text>
-     </View>
+
+     <TouchableOpacity onPress={() => this.nextFunction() }>
+         <Text>Next</Text>
      </TouchableOpacity>
+
+     <TouchableOpacity onPress={() => this.backFunction() }>
+       <Text>Back</Text>
+     </TouchableOpacity>
+
       </View>);
+
+  }
+  nextFunction(){
+    var newDataSrc = ds.cloneWithRows(subInterests);
+
+    this.setState({
+      pictures: newDataSrc
+    });
+
+  }
+
+  backFunction(){
 
   }
   ImageChecked(index){
@@ -89,10 +106,13 @@ export default class interest extends Component {
 
           if(imageArray[index].Selected == true){
 
-            imageArray[index].Selected = false
+            imageArray[index].Selected = false;
+            subInterests.push(imageArray[index].subcategories);
 
           }else{
-            imageArray[index].Selected = true
+            imageArray[index].Selected = true;
+            var indexOfSub = subInterests.indexOf(index);
+            subInterests.splice(indexOfSub, 1);
           }
 
         var newDataSrc = ds.cloneWithRows(imageArray);
@@ -100,8 +120,6 @@ export default class interest extends Component {
         this.setState({
           pictures: newDataSrc
         });
-
-
   }
 }
 

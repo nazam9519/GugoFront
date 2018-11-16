@@ -3,30 +3,41 @@ import Expo from 'expo';
 import Login from './app/components/Login/UserLogin.js';
 import interest from './app/components/Login/interest.js';
 import Register from './app/components/Register/Register.js';
-import { AppRegistry, AsyncStorage, StyleSheet, Text, Alert, TextInput, Button, View,TouchableHighlight, AlertIOS } from 'react-native';
+import { AppRegistry, AsyncStorage, StyleSheet, Text, StatusBar, Alert, TextInput, Button, View,TouchableHighlight, TouchableOpacity, AlertIOS } from 'react-native';
 import {TabNavigator,StackNavigator} from 'react-navigation';
 
 
 class SplashScreen extends React.Component{
   render() {
     return(
+
     <View style={styles.container}>
-      <Text style={styles.zeetitle}>Home Screen</Text>
-      <Button
-        title="Register"
-        onPress={() => this.props.navigation.navigate('Register')}
-      />
-      <Button
-        title="Login"
-        color="#f44271"
-        onPress={() => this.props.navigation.navigate('Login')}
-      />
+      <StatusBar
+        backgroundColor="#d817c4"
+        hidden={false}
+        translucent={false}
+        />
+
+      <View>
+      <Text style={styles.zeetitle}>GuGo</Text>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+          <View style={styles.register_button}>
+            <Text style={styles.buttonText}>Register</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+          <View style={styles.login_button}>
+            <Text style={styles.buttonText}>Login</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
     );
   }
 }
 export default class main extends React.Component {
-  
+
   render() {
     return (
       <RootStack/>
@@ -52,18 +63,32 @@ export const RootStack = StackNavigator({
 
 
 var styles = StyleSheet.create({
-
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
+    justifyContent: 'flex-start',
     padding: 20,
-    backgroundColor: '#ffffff',
+    paddingTop: '35%',
+    backgroundColor: '#178bd8',
+    flex:1
   },
   zeetitle:{
     fontSize: 30,
     alignSelf: 'center',
     marginBottom: 30
   },
+  buttonText:{
+    textAlign: 'center',
+    color:'white',
+  },
+  login_button:{
+    backgroundColor: 'blue',
+    height:35,
+    justifyContent:'center'
+  },
+  register_button:{
+    backgroundColor: '#f44271',
+    height:35,
+    justifyContent:'center'
+  }
 
 })
 
@@ -123,7 +148,7 @@ var styles = StyleSheet.create({
         </TouchableHighlight>
     </View>
 </View>*/
- 
+
 /*var styles = StyleSheet.create({
     container: {
         justifyContent: 'center',

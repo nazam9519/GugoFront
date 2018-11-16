@@ -7,17 +7,17 @@
 			"subcategories": [
 				{
 					"title": "Car Shows",
-					"src": require("../carIcon.png"),
+					"src": require("../CheckMark.png"),
 					"Selected": true
 				},
 				{
 					"title": "Drifting",
-					"src": require("../carIcon.png"),
+					"src": require("../CheckMark.png"),
 					"Selected": true
 				},
 				{
 					"title": "Classics",
-					"src": require("../carIcon.png"),
+					"src": require("../CheckMark.png"),
 					"Selected": true
 				}
 			]
@@ -47,32 +47,134 @@
 		{
 			"title": "Entertainment",
 			"src": require("../bike.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "Food & Drink",
 			"src": require("../download.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "Sports & Recreation",
 			"src": require("../joe_oakes.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "Religion & Beliefs",
 			"src": require("../nabil.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "Internet & Technology",
 			"src": require("../wrx.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		},
 		{
 			"title": "Arts & Entertainment",
 			"src": require("../wrx.png"),
-			"Selected": true
+			"Selected": true,
+			"subcategories": [
+				{
+					"title": "YOGA",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "GYM",
+					"src": require("../Health.png"),
+					"Selected": true
+				},
+				{
+					"title": "Healthy Eating",
+					"src": require("../Health.png"),
+					"Selected": true
+				}
+			]
 		}
 	]
 };
